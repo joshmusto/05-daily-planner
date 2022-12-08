@@ -9,33 +9,46 @@ $(function () {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
 
+  //check all save buttons
+  var saveBtn = document.querySelectorAll(".saveBtn");
+  //use for loop to find specific button and save appropriate data
+  for (i=0; i<saveBtn.length; i++) {
+    saveBtn[i].addEventListener("click", function(event) {
+      //find right hour section
+      var saveHour = event.target.previousElementSibling;
+      //get text
+      var writtenSchedule = saveHour.value;
+      console.log(writtenSchedule);
+    });
+  }
+  
 
-    //set background color by hour
-    var hour09 = document.getElementById("hour-09");
-    var hour10 = document.getElementById("hour-10");
-    var hour11 = document.getElementById("hour-11");
-    var hour12 = document.getElementById("hour-12");
-    var hour13 = document.getElementById("hour-13");
-    var hour14 = document.getElementById("hour-14");
-    var hour15 = document.getElementById("hour-15");
-    var hour16 = document.getElementById("hour-16");
-    var hour17 = document.getElementById("hour-17");
-    //for loop to check times
-    var hourArray = [
-      hour09, hour10, hour11, hour12, hour13, hour14, hour15, hour16, hour17
-    ];
-    var hour = dayjs().hour();
-    for (i=0; i<hourArray.length; i++) {
-      if ((i+9) < hour) {
-        hourArray[i].classList.add("past");
-      }
-      else if((i+9) == hour) {
-        hourArray[i].classList.add("present");
-      }
-      else {
-        hourArray[i].classList.add("future");
-      }
+  //set background color by hour
+  var hour09 = document.getElementById("hour-09");
+  var hour10 = document.getElementById("hour-10");
+  var hour11 = document.getElementById("hour-11");
+  var hour12 = document.getElementById("hour-12");
+  var hour13 = document.getElementById("hour-13");
+  var hour14 = document.getElementById("hour-14");
+  var hour15 = document.getElementById("hour-15");
+  var hour16 = document.getElementById("hour-16");
+  var hour17 = document.getElementById("hour-17");
+  //for loop to check times
+  var hourArray = [
+    hour09, hour10, hour11, hour12, hour13, hour14, hour15, hour16, hour17
+  ];
+  var hour = dayjs().hour();
+  for (i=0; i<hourArray.length; i++) {
+    if ((i+9) < hour) {
+      hourArray[i].classList.add("past");
     }
+    else if((i+9) == hour) {
+      hourArray[i].classList.add("present");
+    }
+    else {
+      hourArray[i].classList.add("future");
+    }
+  }
 
     
   // TODO: Add code to get any user input that was saved in localStorage and set
